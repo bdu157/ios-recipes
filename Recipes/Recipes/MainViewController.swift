@@ -42,7 +42,7 @@ class MainViewController: UIViewController {
             
             DispatchQueue.main.async {
             self.allRecipes = recipe ?? []
-            self.filteredRecipes = self.allRecipes   //this will show all results at first
+           // self.filteredRecipes = self.allRecipes   //this will also show all results at first
             }
         }
     }
@@ -69,6 +69,10 @@ class MainViewController: UIViewController {
             self.filteredRecipes = allRecipes.filter {$0.name.contains(textInput) || $0.instructions.contains(textInput)}
         } else {
             self.filteredRecipes = allRecipes  //displaying all recipes if there is no search term
+        }
+        // this is part that shows all results
+        if SearchTextField.text == "" {
+            self.filteredRecipes = allRecipes
         }
     }
 }
