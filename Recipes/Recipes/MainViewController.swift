@@ -13,11 +13,23 @@ class MainViewController: UIViewController {
     
     let networkClient = RecipesNetworkClient()
     
-    var allRecipes: [Recipe] = []
+    var allRecipes: [Recipe] = [] {
+        didSet {
+            filterRecipes()
+        }
+    }
     
-    var recipesTableViewController: RecipesTableViewController?
+    var recipesTableViewController: RecipesTableViewController? {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
     
-    var filteredRecipes: [Recipe] = [] 
+    var filteredRecipes: [Recipe] = []  {
+        didSet {
+            recipesTableViewController?.recipes = filteredRecipes
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,11 +40,10 @@ class MainViewController: UIViewController {
                 return
             }
             
+            DispatchQueue.main.async {
             self.allRecipes = recipe ?? []
-            
-            
+            }
         }
-        
     }
     
 
@@ -56,7 +67,8 @@ class MainViewController: UIViewController {
         if let textInput = SearchTextField.text {
             self.filteredRecipes = allRecipes.filter {$0.name.contains(textInput)}
         } else {
-            self.recipesTableViewController?.recipes = allRecipes  //displaying all recipes if there is no search term
+            self.filteredRecipes = allRecipes  //displaying all recipes if there is no search term
         }
     }
 }
+
