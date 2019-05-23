@@ -12,7 +12,12 @@ class MainViewController: UIViewController {
     @IBOutlet weak var SearchTextField: UITextField!
     
     let networkClient = RecipesNetworkClient()
+    
     var allRecipes: [Recipe] = []
+    
+    var recipesTableViewController: RecipesTableViewController?
+    
+    var filteredRecipes: [Recipe] = [] 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,10 +42,21 @@ class MainViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == "RecipeListEmbedSegue" {
+            self.recipesTableViewController = segue.destination as? RecipesTableViewController
+        }
     }
  
     @IBAction func SearchTextFieldAction(_ sender: Any) {
+        resignFirstResponder()
+        filterRecipes()
     }
     
+    func filterRecipes() {
+        if let textInput = SearchTextField.text {
+            self.filteredRecipes = allRecipes.filter {$0.name.contains(textInput)}
+        } else {
+            self.recipesTableViewController?.recipes = allRecipes  //displaying all recipes if there is no search term
+        }
+    }
 }
