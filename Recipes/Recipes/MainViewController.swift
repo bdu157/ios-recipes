@@ -18,15 +18,15 @@ class MainViewController: UIViewController {
     }
     
 
-    /*
     // MARK: - Navigation
+    
+    //for container view - RecipesTableViewController so this gets shown what tableView is showing
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
     }
-    */
+ 
     @IBAction func SearchTextFieldAction(_ sender: Any) {
     }
     
