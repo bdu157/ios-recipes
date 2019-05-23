@@ -15,7 +15,7 @@ class MainViewController: UIViewController {
     
     var allRecipes: [Recipe] = [] {
         didSet {
-            filterRecipes()
+            self.filterRecipes()
         }
     }
     
@@ -42,6 +42,7 @@ class MainViewController: UIViewController {
             
             DispatchQueue.main.async {
             self.allRecipes = recipe ?? []
+            self.filteredRecipes = self.allRecipes   //this will show all results at first
             }
         }
     }
@@ -65,7 +66,7 @@ class MainViewController: UIViewController {
     
     func filterRecipes() {
         if let textInput = SearchTextField.text {
-            self.filteredRecipes = allRecipes.filter {$0.name.contains(textInput)}
+            self.filteredRecipes = allRecipes.filter {$0.name.contains(textInput) || $0.instructions.contains(textInput)}
         } else {
             self.filteredRecipes = allRecipes  //displaying all recipes if there is no search term
         }

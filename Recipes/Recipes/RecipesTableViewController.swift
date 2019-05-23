@@ -10,11 +10,16 @@ import UIKit
 
 class RecipesTableViewController: UITableViewController {
     
-    var recipes: [Recipe] = [] 
+    var recipes: [Recipe] = [] {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
