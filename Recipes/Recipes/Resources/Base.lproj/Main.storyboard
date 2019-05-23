@@ -55,22 +55,49 @@
             </objects>
             <point key="canvasLocation" x="447.19999999999999" y="-145.56650246305421"/>
         </scene>
-        <!--Table View Controller-->
+        <!--View Controller-->
+        <scene sceneID="TZG-Ss-REf">
+            <objects>
+                <viewController id="Ofp-8F-fz9" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZxF-bP-bgu">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ovQ-0w-se6"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cJJ-vG-GhP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1239" y="-33"/>
+        </scene>
+        <!--Recipes Table View Controller-->
         <scene sceneID="333-Cp-nSA">
             <objects>
-                <tableViewController id="YS8-pl-PHt" sceneMemberID="viewController">
+                <tableViewController id="YS8-pl-PHt" customClass="RecipesTableViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tla-gx-qJg">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="xix-il-ISV">
-                                <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="8bE-gC-sue" rowHeight="56" style="IBUITableViewCellStyleDefault" id="xix-il-ISV" customClass="Recip">
+                                <rect key="frame" x="0.0" y="28" width="343" height="56"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xix-il-ISV" id="BKO-el-5Lf">
-                                    <rect key="frame" x="0.0" y="0.0" width="343" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="55.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8bE-gC-sue">
+                                            <rect key="frame" x="16" y="0.0" width="311" height="55.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Ofp-8F-fz9" kind="show" identifier="ToDetailRecipeVC" id="rfY-vi-HdE"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -81,7 +108,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1kK-uY-Ehx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1158" y="48"/>
+            <point key="canvasLocation" x="545" y="482"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hTB-PR-mRy">
