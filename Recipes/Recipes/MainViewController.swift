@@ -11,10 +11,23 @@ import UIKit
 class MainViewController: UIViewController {
     @IBOutlet weak var SearchTextField: UITextField!
     
+    let networkClient = RecipesNetworkClient()
+    var allRecipes: [Recipe] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.networkClient.fetchRecipes { (recipe, error) in
+            if let error = error {
+                NSLog("There was an error loading recipes \(error)")
+                return
+            }
+            
+            self.allRecipes = recipe ?? []
+            
+            
+        }
+        
     }
     
 
