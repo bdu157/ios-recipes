@@ -13,7 +13,12 @@ struct RecipesNetworkClient {
     static let recipesURL = URL(string: "https://lambdacookbook.vapor.cloud/recipes")!
     
     func fetchRecipes(completion: @escaping ([Recipe]?, Error?) -> Void) {
+        //let bgQueue = DispatchQueue(label: "any", attributes: .concurrent)
+        
+        
+       // bgQueue.async {
         URLSession.shared.dataTask(with: RecipesNetworkClient.recipesURL) { (data, _, error) in
+        
             if let error = error {
                 completion(nil, error)
                 return
@@ -30,7 +35,8 @@ struct RecipesNetworkClient {
             } catch {
                 completion(nil, error)
                 return
-            }
-        }.resume()
+                }
+            }.resume()
+       // }
     }
 }
